@@ -1,0 +1,9 @@
+FOR ANY NUMBER OF A'S FOLLOWED BY ANY NUMBER OF B'S:
+    regular expression is enough,
+    so Lex is a better option
+    filename:- apbp.l
+
+FOR STRINGS STARTING WITH A'S AND ENDING WITH EQUAL NUMBER OF B'S:
+    some CFG is needed,
+    so we must use Both lex and yacc file.
+    files: all other files

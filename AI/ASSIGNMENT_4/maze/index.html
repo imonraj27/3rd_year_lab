@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Generation Algorithm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div id="canvas-cont"></div>
+                <button class="bfs btn btn-success" onclick="setBFS()">BFS</button>
+                <button class="dfs btn btn-primary" onclick="setDFS()">DFS</button>
+                <button class="dfs btn btn-info" onclick="setAstar()">A*</button>
+            </div>
+        </div>
+    </div>
+
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+
+        function setBFS() {
+            for (let i = 0; i < grid.length; i++) {
+                grid[i].show();
+            }
+            q = [];
+            q.push(grid[0]);
+            grid[0].bfsvisited = true;
+            bfsfinished = false;
+            frameRate(5);
+        }
+
+        function setAstar() {
+            for (let i = 0; i < grid.length; i++) {
+                grid[i].show();
+            }
+            pq.enqueue(grid[0], grid[0].heiuristic())
+            grid[0].astarvisited = true;
+            astarfinished = false;
+            frameRate(5);
+        }
+
+        function setDFS() {
+            for (let i = 0; i < grid.length; i++) {
+                grid[i].show();
+            }
+            currentCell = grid[0];
+            dfsfinished = false;
+        }
+    </script>
+</body>
+
+</html>

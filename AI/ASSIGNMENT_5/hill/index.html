@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Next, create a div element to hold the plot -->
+    <div id="plot"></div>
+    <script>
+        // Create a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+
+        // Set up a callback function to handle the response
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Parse the JSON data
+                const points = JSON.parse(xhr.responseText);
+
+                // Do something with the JSON data
+                console.log(points);
+
+                // Extract the x, y, and z coordinates into separate arrays
+                const x = points.map(p => p[0]);
+                const y = points.map(p => p[1]);
+                const z = points.map(p => p[2]);
+
+                // Define the plot data
+                const data = [{
+                    type: 'scatter3d',
+                    mode: 'markers',
+                    x: x,
+                    y: y,
+                    z: z,
+                    marker: {
+                        color: 'rgb(0, 60, 100)',
+                        size: 5,
+                        symbol: 'circle'
+                    }
+                }];
+
+                // Define the plot layout
+                const layout = {
+                    margin: {
+                        l: 0,
+                        r: 0,
+                        b: 0,
+                        t: 0
+                    }
+                };
+
+                // Create the plot
+                Plotly.newPlot('plot', data, layout);
+
+            }
+        };
+
+        // Open the connection to the file
+        xhr.open('GET', 'data.json', true);
+
+        // Set the response type to 'json'
+        xhr.responseType = 'text';
+
+        // Send the request
+        xhr.send();
+
+
+    </script>
+</body>
+
+</html>

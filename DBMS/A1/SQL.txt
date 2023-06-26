@@ -1,0 +1,171 @@
+QUESTION N0. 1
+<============================EMP TABLE==========================>
+
+CREATE TABLE EMP098 
+( 
+EMP_CODE CHAR(5) PRIMARY KEY,
+EMP_NAME CHAR(20),
+DEPT_CODE CHAR(5),
+DESIG_CODE CHAR(5),
+SEX CHAR(1),
+ADDRESS CHAR(25),
+CITY CHAR(20),
+STATE CHAR(20),
+PIN CHAR(6),
+BASIC NUMBER(8,0),
+JN_DT DATE
+);
+
+
+
+<============================DESIGNATION TABLE==========================>
+CREATE TABLE DESIGNATION098
+(
+DESIG_CODE CHAR(5) PRIMARY KEY,
+DESIG_DESC CHAR(20)
+);
+
+INSERT INTO DESIGNATION098 VALUES ('prof','Teaches the students');
+
+<============================DEPARTMENT TABLE==========================>
+CREATE TABLE DEPARTMENT098
+(
+DEPT_CODE CHAR(5) PRIMARY KEY,
+DEPT_NAME CHAR(20)
+);
+
+INSERT INTO DEPARTMENT098 VALUES ('cse','Computer Science');
+
+
+
+
+=======================================================================================================================================================
+
+QUESTION NO. 2
+
+DESCRIBE EMP098;
+DESCRIBE DEPARTMENT098;
+DESCRIBE DESIGNATION098;
+
+========================================================================================================================================================
+
+QUESTION NO. 3
+
+INSERT INTO DESIGNATION098 VALUES ('mnger','Manager');
+INSERT INTO DESIGNATION098 VALUES ('exctv','Executive');
+INSERT INTO DESIGNATION098 VALUES ('offcr','Officer');
+INSERT INTO DESIGNATION098 VALUES ('clerk','Clerk');
+INSERT INTO DESIGNATION098 VALUES ('helpr','Helper');
+
+
+INSERT INTO DEPARTMENT098 VALUES ('prsnl','Personnel');
+INSERT INTO DEPARTMENT098 VALUES ('prodc','Production');
+INSERT INTO DEPARTMENT098 VALUES ('finnc','Finance');
+INSERT INTO DEPARTMENT098 VALUES ('prchs','Purchase');
+INSERT INTO DEPARTMENT098 VALUES ('rsrch','Research');
+
+
+INSERT INTO EMP098 VALUES ('10000','Sanjoy Saha','rsrch','exctv','M','Jadavpur','Kolkata','West Bengal','700023','200000','');
+
+INSERT INTO EMP098 VALUES ('20000','Tania Parvin','prchs','exctv','F','Jadavpur','Kolkata','West Bengal','700023','200000','');
+
+INSERT INTO EMP098 VALUES ('30000','Roy Ram','prsnl','mnger','M','Jadavpur','Kolkata','West Bengal','700023','200000','');
+
+INSERT INTO EMP098 VALUES ('40000','Google Das','finnc','offcr','M','Jadavpur','Kolkata','West Bengal','700023','200000','');
+
+INSERT INTO EMP098 VALUES ('80000','Jasmine Julia','prodc','clerk','F','Jadavpur','Kolkata','West Bengal','700023','0','');
+
+========================================================================================================================================================
+
+QUESTION NO 4
+
+INSERT INTO EMP098 (EMP_CODE,EMP_NAME,DESIG_CODE,SEX,ADDRESS,CITY,STATE,PIN,JN_DT) VALUES ('50000','Deb Haque','exctv','M','Jadavpur','Kolkata','West Bengal','700023','');
+
+INSERT INTO EMP098 (EMP_CODE,EMP_NAME,DESIG_CODE,SEX,ADDRESS,CITY,STATE,PIN,JN_DT) VALUES ('60000','Rudra ali','exctv','M','Jadavpur','Kolkata','West Bengal','700023','');
+
+INSERT INTO EMP098 (EMP_CODE,EMP_NAME,DESIG_CODE,SEX,ADDRESS,CITY,STATE,PIN,JN_DT) VALUES ('70000','Motiur Chaterjee','exctv','M','Jadavpur','Kolkata','West Bengal','700023','');
+
+========================================================================================================================================================
+
+QUESTION NO 5
+
+SELECT * FROM EMP098 WHERE DEPT_CODE IS NULL;
+
+========================================================================================================================================================
+QUESTION NO 6
+
+SELECT * FROM EMP098 WHERE BASIC=0;
+
+========================================================================================================================================================
+
+QUESTION NO 7
+
+SELECT * FROM EMP098 WHERE BASIC IS NULL;
+
+
+========================================================================================================================================================
+
+QUESTION NO 8
+
+SELECT AVG(BASIC) AS AVERAGE_SALARY FROM EMP098;
+
+========================================================================================================================================================
+
+QUESTION NO 9
+
+UPDATE EMP098 SET BASIC=0 WHERE BASIC IS NULL;
+
+========================================================================================================================================================
+
+QUESTION NO 10
+
+SELECT AVG(BASIC) AS AVERAGE_SALARY FROM EMP098;
+
+========================================================================================================================================================
+
+QUESTION NO 11
+
+DELETE FROM EMP098 WHERE DEPT_CODE IS NULL;
+
+========================================================================================================================================================
+
+QUESTION NO 12
+
+SELECT EMP_NAME, 1.9*BASIC AS NET_PAY FROM EMP098;
+
+========================================================================================================================================================
+
+QUESTION NO 13
+
+SELECT EMP_NAME, BASIC FROM EMP098 ORDER BY DEPT_CODE ASC;
+
+========================================================================================================================================================
+
+QUESTION NO 14
+
+SELECT * FROM EMP098 WHERE JN_DT > DATE('1990-01-01');
+
+========================================================================================================================================================
+
+QUESTION NO 16
+
+SELECT MIN(BASIC) AS MIN_BASIC, MAX(BASIC) AS MAX_BASIC FROM EMP098;
+
+========================================================================================================================================================
+
+QUESTION NO 17
+
+SELECT COUNT(*) FROM EMP098 WHERE SEX='F';
+
+========================================================================================================================================================
+
+QUESTION NO 18
+
+UPDATE EMP098 SET CITY=UPPER(CITY);
+
+========================================================================================================================================================
+
+QUESTION NO 19
+
+SELECT DISTINCT CITY FROM EMP098;
+

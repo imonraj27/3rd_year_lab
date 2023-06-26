@@ -1,0 +1,74 @@
+==================================================================================================
+QUESTION NO 1
+
+SELECT MAX(basic), MIN(basic), AVG(basic), DEPT_CODE FROM emp098 GROUP BY DEPT_CODE;
+
+==================================================================================================
+QUESTION NO 2
+
+SELECT COUNT(*) AS NO_OF_FEMALES, DEPT_CODE FROM EMP098 WHERE SEX='F' GROUP BY DEPT_CODE ORDER BY DEPT_CODE ASC;
+
+==================================================================================================
+QUESTION NO 3
+
+SELECT COUNT(*) AS NO_EMP_PER_DEPT_CITY,DEPT_CODE,CITY FROM emp098 GROUP BY DEPT_CODE, CITY;
+
+===========================================================================================
+QUESTION NO 6
+
+SELECT EMP098.EMP_NAME, emp098.DESIG_CODE, designation098.DESIG_DESC, emp098.BASIC FROM emp098 INNER JOIN designation098 ON emp098.DESIG_CODE = designation098.DESIG_CODE;
+
+===========================================================================================
+QUESTION NO 7
+
+SELECT EMP098.EMP_NAME, designation098.DESIG_DESC, department098.DEPT_NAME, emp098.BASIC FROM emp098 INNER JOIN designation098 ON emp098.DESIG_CODE = designation098.DESIG_CODE INNER JOIN department098 ON emp098.DEPT_CODE=department098.DEPT_CODE;
+
+===========================================================================================
+QUESTION NO 8	
+
+(SELECT DEPT_CODE FROM department098) except (SELECT DISTINCT emp098.DEPT_CODE FROM emp098 INNER JOIN department098 ON emp098.DEPT_CODE=department098.DEPT_CODE);
+
+===========================================================================================
+QUESTION NO 9
+
+SELECT DISTINCT emp098.DEPT_CODE FROM emp098 INNER JOIN department098 ON emp098.DEPT_CODE=department098.DEPT_CODE;
+
+===========================================================================================
+QUESTION NO 11
+
+SELECT emp098.dept_code
+FROM emp098
+WHERE emp098.basic = (SELECT MAX(basic) FROM emp098);
+
+==========================================================================================
+QUESTION NO 12
+
+SELECT d.desig_desc
+FROM emp098 as e
+JOIN designation098 as d ON e.desig_code = d.desig_code
+WHERE e.basic = (SELECT MAX(basic) FROM emp098);
+
+===========================================================================================
+QUESTION 13
+
+SELECT COUNT(*) AS NO_MNGR_DEPT,department098.DEPT_NAME FROM emp098 INNER JOIN department098 ON department098.dept_code = emp098.dept_code WHERE emp098.DESIG_CODE='mnger' GROUP BY emp098.DEPT_CODE;
+
+===========================================================================================
+QUESTION 14
+
+(SELECT basic FROM emp098) except (SELECT DISTINCT emp098.basic FROM emp098 INNER JOIN emp098 AS E ON emp098.basic<E.basic);
+
+===========================================================================================
+QUESTION 15
+
+(SELECT basic FROM emp098) except (SELECT DISTINCT emp098.basic FROM emp098 INNER JOIN emp098 AS E ON emp098.basic>E.basic);
+
+===========================================================================================
+QUESTION 18
+
+DELETE FROM emp098 WHERE DESIG_CODE NOT IN (SELECT DESIG_CODE FROM designation098);
+
+===========================================================================================
+QUESTION 20
+
+SELECT COUNT(*) AS NO_MNGR_FEMALE FROM emp098 WHERE desig_code='mnger' AND SEX='F';
